@@ -9,3 +9,6 @@ class Article(models.Model):
     summary = models.CharField(max_length=1000)
     notes = models.CharField(max_length=2000)
     related_links = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
