@@ -21,4 +21,5 @@ from article_tool import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article_tool/', views.article_list),
+    path('article_tool/<int:id>', views.article_detail)
 ]
