@@ -5,5 +5,5 @@ from .serializers import ArticleSerializer
 def article_list(request):
     articles = Article.objects.all()
     serializer = ArticleSerializer(articles, many=True)
-    return JsonResponse(serializer.data)
+    return JsonResponse({'articles': serializer.data}, safe=False)
 
