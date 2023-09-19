@@ -7,7 +7,7 @@ from rest_framework import status
 
 
 @api_view(['GET', 'POST'])
-def article_list(request):
+def article_list(request, format=None):
 
     if request.method == 'GET':
         articles = Article.objects.all()
@@ -21,7 +21,7 @@ def article_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def article_detail(request,id):
+def article_detail(request,id, format=None):
     try:
         article = Article.objects.get(pk=id)
     except Article.DoesNotExist:
