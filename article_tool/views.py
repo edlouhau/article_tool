@@ -12,7 +12,7 @@ def article_list(request):
     if request.method == 'GET':
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
-        return JsonResponse({'articles': serializer.data})
+        return Response(serializer.data)
     
     if request.method == 'POST':
         serializer = ArticleSerializer(data=request.data)
@@ -39,5 +39,6 @@ def article_detail(request,id):
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
     
     elif request.method == 'DELETE':
-        pass
+        article.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
        
