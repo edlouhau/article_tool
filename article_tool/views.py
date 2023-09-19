@@ -31,8 +31,12 @@ def article_detail(request,id):
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
     
-    elif request.method == 'POST':
-        pass
+    elif request.method == 'PUT':
+        serializer = ArticleSerializer(article, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
     
     elif request.method == 'DELETE':
         pass
