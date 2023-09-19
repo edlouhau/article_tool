@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # My Installed Apps
+    # Installed Apps
+    'rest_framework',
     'articles_api',
     
     # Default Apps
